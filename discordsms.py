@@ -1,3 +1,9 @@
+# --- Compatibility patch for Python 3.12+ ---
+# Discord.py sometimes imports 'audioop', which was removed from Python 3.12.
+# Since this bot does NOT use voice features, we safely stub it.
+import sys
+sys.modules['audioop'] = None
+
 import os
 import requests
 from urllib.parse import quote_plus
@@ -8,7 +14,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-BOT_TOKEN = os.getenv("MTQyOTgzNjgwNDk2NTc5Nzk4OQ.GZgzq7.D_OVcrk44YEHUenxf9f1xY_wXakyVuCabTQARg")
+BOT_TOKEN = os.getenv("DISCORD_TOKEN")
 
 BASE_URL_TEMPLATE = "https://sms-spoofer.itxkaal.workers.dev/?mo={number}&text={message}"
 
@@ -69,4 +75,4 @@ async def send(interaction: discord.Interaction, number: str, message: str):
     else:
         await interaction.followup.send(f"❌ Failed (HTTP {code})\n```\n{text[:500]}\n```")
 
-bot.run(MTQyOTgzNjgwNDk2NTc5Nzk4OQ.GZgzq7.D_OVcrk44YEHUenxf9f1xY_wXakyVuCabTQARg)
+bot.run(BOT_TOKEN)
