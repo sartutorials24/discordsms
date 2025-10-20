@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 
 # Load environment variables
 load_dotenv()
-BOT_TOKEN = os.getenv("DISCORD_TOKEN")
+BOT_TOKEN = os.getenv("MTQyOTgzNjgwNDk2NTc5Nzk4OQ.GZgzq7.D_OVcrk44YEHUenxf9f1xY_wXakyVuCabTQARg")
 
 BASE_URL_TEMPLATE = "https://sms-spoofer.itxkaal.workers.dev/?mo={number}&text={message}"
 
@@ -69,4 +69,4 @@ async def send(interaction: discord.Interaction, number: str, message: str):
     else:
         await interaction.followup.send(f"❌ Failed (HTTP {code})\n```\n{text[:500]}\n```")
 
-bot.run(BOT_TOKEN)
+bot.run(MTQyOTgzNjgwNDk2NTc5Nzk4OQ.GZgzq7.D_OVcrk44YEHUenxf9f1xY_wXakyVuCabTQARg)
